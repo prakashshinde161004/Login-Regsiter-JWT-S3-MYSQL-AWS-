@@ -8,9 +8,6 @@ pipeline {
     }
 
     // Tools configured in Jenkins (e.g. Node.js v18)
-    tools {
-        nodejs 'NodeJS-18'
-    }
 
     stages {
 
