@@ -18,12 +18,15 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
-// Serve static assets from frontend/dist if available
+// Serve static assets (React frontend)
+const publicDir = path.join(__dirname, "public");
 const frontendDist = path.join(__dirname, "../frontend/dist");
-if (fs.existsSync(frontendDist)) {
-  app.use(express.static(frontendDist));
+const staticDir = fs.existsSync(publicDir) ? publicDir : (fs.existsSync(frontendDist) ? frontendDist : null);
+
+if (staticDir) {
+  app.use(express.static(staticDir));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendDist, "index.html"));
+    res.sendFile(path.join(staticDir, "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
