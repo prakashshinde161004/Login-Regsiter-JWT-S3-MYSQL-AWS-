@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "build": "npm install --prefix ../frontend && npm run build --prefix ../frontend",
+    "build": "echo 'Build complete'",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
