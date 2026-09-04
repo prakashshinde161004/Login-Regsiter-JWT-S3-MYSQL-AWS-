@@ -5,10 +5,12 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
+import { initDb } from "./config/db.js";
 
 dotenv.config();
 
 const app = express();
+initDb();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
